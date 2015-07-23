@@ -1,0 +1,71 @@
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[user]
+	name = David
+	email = davidmassant@gmail.com
+[credential]
+	helper = osxkeychain
+	helper = osxkeychaingit
+[push]
+	default = matching
+[log]
+    date = relative
+[alias]
+    tag = tag -a
+    st = status -s -b
+    sl = stash list
+    ci = commit
+    co = checkout
+    br = branch
+    pb = push -u origin --tags
+    f = fetch --all
+    pull = pull --rebase
+    r = remote -v
+    b = branch -a
+    info = remote show origin
+    wdiff = diff --no-ext-diff --color-words
+    l = log --stat --format=format:'"%C(yellow)%h %C(cyan)%an %C(blue)(%cn) %C(cyan)%ad%d\n%C(green)%s\n%b%N"'
+    ll = log --stat --format=format:'"%C(yellow)%h %C(cyan)%an <%ae> %ad%d\n\t%C(blue)%cn <%ce> %ci\n%C(green)%s\n%b%N"'
+    lm = log --stat --format=format:'"%C(yellow)%h %C(cyan)%an %C(blue)(%cn) %C(cyan)%ad%d\n%C(green)%s\n%b%N"' master..
+    ahead = log --stat --format=format:'"%C(yellow)%h %C(cyan)%an %C(blue)(%cn) %ad\n%C(green)%s\n%b%N"' origin/master..HEAD
+    behind = log --stat --format=format:'"%C(yellow)%h %C(cyan)%an %C(blue)(%cn) %ad\n%C(green)%s\n%b%N"' HEAD..origin/master
+    hist = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset (%Cgreen%cr%Creset) %s [%Cblue%an%Creset]' --graph --abbrev-commit --date=relative
+    prev = checkout @{-1}
+    heads = for-each-ref --sort=-committerdate refs/heads/ --format='"%(refname:short) %1B[0;36m%(authorname)%1B[m %1B[0;33m%(committerdate)%1B[m"'
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[diff]
+    ignoreSubmodules = untracked
+    tool = mvimdiff
+[difftool]
+    prompt = false
+[difftool "mvimdiff"]
+    cmd = mvim -d -f $LOCAL $REMOTE
+[grep]
+    extendedRegexp = true
+[rebase]
+    autosquash = true
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+[github]
+    user = dinomite
+[blame]
+    date = short
+[core]
+    quotepath = false
+	autocrlf = input
+[branch]
+    autosetuprebase = always
+
+[hub]
+    protocol = https
