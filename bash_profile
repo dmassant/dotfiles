@@ -1,3 +1,4 @@
+export EDITOR="nano"
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
@@ -54,6 +55,7 @@ export AUTOJUMP_KEEP_SYMLINKS=1
 
 # System installed extensions
 if [ -f /usr/local/etc/bash_completion ]; then
+    echo
     . /usr/local/etc/bash_completion
 fi
 if [ -f /usr/local/etc/profile.d/autojump.sh ]; then
@@ -71,8 +73,8 @@ if [ -n "$BREW" ]; then
     fi
 
     # Autojump
-    if [ -f `brew --prefix`/etc/autojump.bash ]; then
-        . `brew --prefix`/etc/autojump.bash
+    if [ -f `brew --prefix`/etc/profile.d/autojump.bash ]; then
+        . `brew --prefix`/etc/profile.d/autojump.bash
     fi
 fi
 
@@ -128,6 +130,15 @@ alias ld="ls -d"
 # Show most recent files at the bottom
 alias ltr="ls -ltr"
 
+# smart git calls and easy status check
+function g {
+if [[ $# > 0 ]]; then
+git $@
+else
+git status --short --branch
+fi
+}
+
 # Why doesn't everyone have these?
 alias ..="cd .."
 alias ...="cd ../.."
@@ -135,7 +146,4 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 alias .......="cd ../../../../../.."
-
-
-
 

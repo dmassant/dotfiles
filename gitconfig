@@ -7,9 +7,8 @@
 	email = davidmassant@gmail.com
 [credential]
 	helper = osxkeychain
-	helper = osxkeychaingit
 [push]
-	default = matching
+	default = current
 [log]
     date = relative
 [alias]
@@ -64,8 +63,15 @@
 [core]
     quotepath = false
 	autocrlf = input
+	excludesfile = /Users/Macarthas/.gitignore_global
 [branch]
     autosetuprebase = always
 
 [hub]
     protocol = https
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
