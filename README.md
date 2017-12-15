@@ -7,9 +7,9 @@ To apply them...
 clone this repo, then go into that dir and do `./install`
 
 
-If there is an issue, you have to make sure the files don't exist somewhere else. If they do, you have to mv (move) them manually. 
+If there is an issue, you have to make sure the files don't exist somewhere else. If they do, you have to mv (move) them manually.
 
-
+Sadly, this does not include access to "git up" over "git pull," which should soon be described [here].
 
 This is also great: https://gist.github.com/fzrh/a54f2ef82c418bb5d929
 
